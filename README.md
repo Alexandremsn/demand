@@ -32,22 +32,52 @@ Os softwares  usados neste projeto foram:
 
 Será descrito abaixo através de textos e imagens.
 
+  
+  
 Para este projeto usamos diversas bases de dados, como de transções, preço do petróleo, feriados, dados das lojas e a base de dados principal
 tratamos as bases separadamente, e posteriormente integramos os dados necessários ao nosso modelo na base principal.
+Em um primeiro momento recoeremos ao SQL para filtrar a base pois a base original possui algo em torno de 125 milhões de linhas e devido as minhas limitações computacionais elaboramos um script para filtrar os 20 produtos mais vendidos e exportar o resultado desta consulta em um arquivo csv, ficamos com uma base de aproximadamente 1,6 millhoes de linhas.
   
-Vamos trabalhar nos dados de treino e teste.
+### Ambiente SQL
+  
+Primeiramente criamos o banco de dados a tabela e alimentamos ela neste banco de dados
+  
+<img src=images/sql_08.png> 
+  
+Depois filtramos os 20 maiores valores em unidades vendidas totais,
+como resultado desta consulta copiamos estes id de produtos e salvamos em um aquivo texto para uso futuro
+  
+<img src=images/sql_09.png> 
+  
+Finalmente consultamos apenas os valores da lista gerada pela consulta anterior e limitamos a consulta apenas a estes valores, foi computacionalmente mais rápido como iamos consultar poucos valores é um caminho válido, pois um join entre tabelas deste tamanho seria relativamente demorado.
+Exportamos nossa base reduzida para um arquivo .csv para uso no Python.
+  
+<img src=images/sql_final.png> 
+  
+### Tabela de treino e teste  
+  
+Agora no Python vamos trabalhar nos dados de treino e teste.
 esta lista foi gerada baseada na consulta sql anteriomente realizada, que nos descreveu os 20 produtos mais vendidos.  
 
 <img src=images/cff_006.png>
 
-Após filtrar os dados ficamos com uma base de teste reduzida contendo apenas os 20 produtos mais vendidos/
+Após filtrar os dados ficamos com uma base de teste reduzida contendo apenas os 20 produtos mais vendidos
 
   
 <img src=images/cff_007.png>
 
 
-importamos a base de treino e esta está
+Importamos a base de treino e esta ficou desformatatada
 
+<img src=images/cff_008.png>
+  
+Arrumamos o index e inserimos os nomes das colunas deixando com este aspécto abaixo
+
+
+<img src=images/cff_009.png>
+ 
+### Tabela de preço do petróleo
+  
 
 A Segunda base que vamos tratar seria a de preço do petróleo
 utilizamos a ferramenta KNNImputer para preencher os valores faltantes
@@ -72,62 +102,62 @@ Agora temos uma base de teste com a coluna de preço do pretóleo definida de ac
   
 <img src=images/cff_005.png>
 
+### Tabela de feriados e lojas
+  
+A terceira base que vamos precisar tratar seria a base de feriados, vamos cruzar esta tabela com a tabela das localidades das lojas para obter o resultado de que lojas são afetadas por qual feriado.
 
-Realizamos novamente o pairplot e tivemos uma atenuação do formato price x carat
+Assim temos os dados de lojas com eu id de loja(store_nbr) e onde se localiza, as demais informações da tabela não utilizaremos
   
-<img src=images/spair%20(1).png>
+ <img src=images/cff_010.png> 
+ 
+ 
+ Aqui temos a tabela de feriados
   
-Vamos analisar mais a fundo esta variável plotamos ela individualmente.
-Percebemos uma distância variável da região de concentração.
+ <img src=images/cff_011.png>
+  
+ Verificamos quais as ocorências de cidades e estados para começar a pensar como abordar este problema de cruzamento
+  
+ <img src=images/cff_012.png>
+  
+  Agora verificamos os tipos de feriados e verificamos 3 categorias municipal, estadual e nacional
+  Verificamos também os tipos de feriados
+  
+ <img src=images/cff_013.png> 
+  
+  
+Agora vamos construir uma função que nos devolve uma lista com as lojas afetadas por cada feriado
+  
+ <img src=images/cff_014.png>
+  
+Assim ficamos com este resultado
+  
+<img src=images/cff_015.png>  
 
-<img src=images/line_01.png>
-  
-Aplicamos a escala logarítmica para suavizar o ruído e obtivemos sucesso agora a distância está mais uniforme.  
-Assim fazia sentido usar escala logarítmica na construção de nosso modelo.
-  
-
-  
-<img src=images/line_02.png>  
+Depois escrevemos outra função que vai dividir os feriados em diferentes classificações
  
   
-Por fim a base ficou desta forma e decidimos adicionar a variável volume que seria a multiplicação dos 3 eixos
-em um teste de correlação apresentou uma correlação maior que os eixos individuais. 
+<img src=images/cff_016.png>
+
+Assim verificamos que rodou corretameten e a coluna classification foi criada e povoada corretamente com valores desejados
   
-<img src=images/diamond_005.png>
-
-Na de estimação de dados tivemos uma linha com ausência de alguns dados, assim para a coluna que faltava apenas o z usaremos a fórmula fornecida pelo codebook, e para a linha com ausência de dados nas 3 dimensões vamos usar uma coluna para doar os dados
-assim pegamos uma informação de outra coluna com mesmo depth e mesma table.
-
-
-<img src=images/diamond_006.png>
   
-Assim aplicamos esta função para o cálculo do volume.
+ <img src=images/cff_017.png>
   
-<img src=images/diamond_007.png>
-
-E esta função para o cálculo das dimensões faltantes.
-
-<img src=images/diamond_008.png>
-
-Executamos as funções foi necessário adicionar 1 nas categorias, pois como usaríamos escala logarítmica o valor zero daria erro na função assim reajustamos a escala para partir de 1.
-
-
-<img src=images/diamond_009.png>
-
-Construindo o modelo, para as variáveis dimensionais tínhamos pouco ruído assim decidi não aplicar a elas a função logarítmica.
-
+  Criamos uma função para classificar os dias de mais venda véspera do natal e véspera do dia das mães, assim criamos a coluna major_holiday
+  Por fim ficamos com este resultado.
   
-<img src=images/diamond_010.png>
+  <img src=images/cff_018.png>
+  
+  ### Pré Processamento
 
-Rodamos o teste da função e os números para o teste parecem muito promissores apesar de estarem em escala logarítmica ainda assim deram um valor baixo.
-
-<img src=images/diamond_011.png>
-
-Agora aplicamos nosso modelo ao dataset que queremos prever os preços.
-
-<img src=images/diamond_012.png>
-
-Salvamos em um arquivo .csv
+  importamos todas estas tabelas para uso
+  agora vamos deixar os dados prontos para usar na EDA e no nosso modelo preditivo 
+  
+  <img src=images/cff_019.png>
+  
+  Assim
+  
+  <img src=images/cff_020.png>
   
 Futuramente, seria interessante, testar mais extensamente as combinações de função logarítmica e dados sem transformação e usar outros métodos como decision forest para obter melhores resultados.
 
