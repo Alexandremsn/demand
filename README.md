@@ -269,98 +269,95 @@ Plotando unidades vendidas por data e marcando o sábado, vimos claramente uma r
   
   Assim vimos que de um modo geral as variáveis criadas podem ser usadas por nosso modelo para compreeender as diferenças de dadso mas que para alguns produtos são este impacto ocorre de forma diferente mas ainda são válidas para contrução de nosso modelo.
   
- ### Contruindo  o Modelo Preditivo
+ ### Contruindo o modelo preditivo para transações
   
-  ddsds
+Importamos as bibliotecas e criamos uma função para separar os dados em treino e teste para séries temporais
   
   
   <img src=images/cff_036.png>
   
   
   
-  ccsds
+  Para definir os hiperparâmetros vamos seleciona-los com base em uma loja e depois escalamos o modelo para as demais lojas, 
+  Selecionamos as variáveis e normalizamos a variável numérica
   
   
   <img src=images/cff_037.png>
   
   
-  
-  
-  dssd
+Testamos uma abordagem de boost mas obtivemos um resultado bem similar mas o tempo de processamento foi muito maior assim, optaremos em seguir com o modelo de rede neural
   
   
   <img src=images/cff_038.png>
   
   
   
-  sssds
+Assim definimos o nosso modelo de rede neural testamos outras variações de camadas mas esta configuração foi a que performou melhor
   
   
   <img src=images/cff_039.png>
   
   
-  ddsfd
+ O resultado do método de rede neural foi similar como explicado acima
   
-  <img src=images/cff_040.png>
+
+ <img src=images/cff_040.png>
   
-  dds
-  
-  <img src=images/cff_041.png>
-  
-  
-  dfd
+Agora escalamos o modelo para todas as lojas.
   
   
   <img src=images/cff_042.png>
   
   
-  ssds
+ Definimos uma função para passar as infromações de transações para o dataset de treino e usamos nosso modelo para prever os valores do dataset de teste.
   
+  <img src=images/cff_041.png>
+ 
+  Dropamos as varíaveis Auxiliares e salvamos o dataset de treino e teste com as transações
   
   <img src=images/cff_043.png>
   
+  ### Modelo Preditivo Final
   
-  
-  ddsdw
-  
+  Criamos mais uma variável Dummie para as lojas
+    
   
   <img src=images/cff_044.png>
   
   
-  
-  dsds
+ 
+  Criamos uma tendência linear indifcando a passagem do tempo em dias
   
   
   <img src=images/cff_045.png>
   
   
   
-  dsds
+  Selecionamos as variáveis
   
   
   <img src=images/cff_046.png>
   
   
   
-  
-  sdsda
+  Normalizamos as variáveis numéricas
   
   
   <img src=images/cff_047.png>
   
   
-  
-  sasas
+  Definimos o nosso modelo
   
   
   
   <img src=images/cff_048.png>
   
-  dfdffd
+  Após vários testes escalamos este modelo para todos os produtos da mesma forma como feito com o modelo de transações que foi escalado para lojas
+  assim tivemos este relatório final do modelo
   
   <img src=images/cff_049.png>
   
-  dsds
+  Esta tabela ilustra os melhores e piores desempenhos preditivos do modelo, foram criadas métricas para avaliar, como média de unidades vendidas, o erro , o erro percentual em relação a média, a variação entre o menor e maior valor, o desvio padrão, o valor mínimo, o total de valores negativos, e coeficiênte de variação.
   
   <img src=images/cff_050.png>
   
