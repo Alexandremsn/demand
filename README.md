@@ -362,12 +362,8 @@ Agora escalamos o modelo para todas as lojas.
   <img src=images/cff_050.png>
   
   
-  ssss
-  
-  <img src=images/cff_051.png>
-  
-  
-Futuramente, seria interessante, testar mais extensamente as combinações de função logarítmica e dados sem transformação e usar outros métodos como decision forest para obter melhores resultados.
+Como era esperado o modelo performou pior com dados mais heterogêneos, porém esta não é a única explicação, temos concorrentemente a variação, alto índice de devoluções também impactando de forma geral negativamente, porém de forma diferente em diferentes produtos, indo de impactar claramente a simplemente não ter impacto nennhum no erro. olhando os agrupamentos por classe de produto e tipo de produto, não observamos pelo menos com os 20 produtos que temos um padrão claro.
+Para os dados temos o valor de unidades vendidas que se dá por vendas - devoluções, mas como não temos esta separação, seria um dado interresante para agregar, pois tratando os dois valores em separado poderiamos observar melhor a infuêcia ou não das devoluções nas vendas. outro ponto seria expandir o modelo para poder mensurar de forma melhor a influência das classes e tipos de produtos na assertividade do modelo.
 
 
 ## Recursos Usados
@@ -383,7 +379,7 @@ Futuramente, seria interessante, testar mais extensamente as combinações de fu
 
 ## Links
 
-  - Repositório: https://github.com/Alexandremsn/Ricks_Diamonds
+  - Repositório: https://github.com/Alexandremsn/demand
   - Se for encontrado um bug, favor entrar em contato alexandremsneto1986@gmail.com
 
 
