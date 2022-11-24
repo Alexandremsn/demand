@@ -155,9 +155,201 @@ Assim verificamos que rodou corretameten e a coluna classification foi criada e 
   
   <img src=images/cff_019.png>
   
-  Assim
+  Assim temos estes valores para a tabela de treino originalmente alteramos o tipo da data de cadeia de caracteres para Datetime
   
   <img src=images/cff_020.png>
+  
+  
+Ao cruzar as tabelas de treino e preço de petróleo percebemos valores nulos, pelo fato que a loja funciona finais de semana mas as bolsas de comódites não, assim precisamos escrever uma função para copiar os valores de sexta-feira para os dias do final de semana.
+  
+  
+  <img src=images/cff_022.png>
+  
+  
+ Após aplicar a função criamos tabém a coluna que descreve o dia da semana equivalente do valor da data, assim podemos trabalhar melhor os apéctos sazonais dos diferente dias de semanas e verificar se existe este padão para estes dados ou não. por fim ficamos com estas colunas e com todos os valores preenchidos.
+  
+  
+  <img src=images/cff_023.png>
+  
+Agora vamos trazer as informações de classificação do feriado e feriado relevante para a tabela de dados principais
+escrvemos este código para mapear os dados e puxar os valores que encontrar cruzando se a loja correspondente da linha está na relação de lojas afetadas para aquela data.
+  
+  <img src=images/cff_024.png>
+  
+ Criamos também um código para trazer da tabela de produtos alguns dados para a tabela principal, o grupo de produto, a classe de produto,  se é peressível
+  
+  
+ <img src=images/cff_025.png>
+  
+  
+  
+ Por fim convertermos as linhas categoricas para variáveis dummies.
+  
+  
+  
+  <img src=images/cff_026.png>
+  
+  
+  ### EDA
+  
+  
+  <img src=images/cff_027.png>
+  
+  
+  
+  ddff
+  
+  
+  <img src=images/cff_028.png>
+  
+  
+  
+  sssdds
+  
+  
+  <img src=images/cff_029.png>
+  
+  
+  
+  ddfd
+  
+  
+  <img src=images/cff_030.png>
+  
+  
+  
+  sdsds
+  
+  
+  
+  <img src=images/cff_031.png>
+  
+  
+  s
+  
+  
+  <img src=images/cff_032.png>
+
+  
+  s
+  
+  
+  <img src=images/cff_033.png>
+  
+  
+  sss
+  
+  
+  <img src=images/cff_034.png>
+  
+  
+  
+  sssd
+  
+  
+  <img src=images/cff_035.png>
+  
+  
+  
+  
+  ddsds
+  
+  
+  <img src=images/cff_036.png>
+  
+  
+  
+  ccsds
+  
+  
+  <img src=images/cff_037.png>
+  
+  
+  
+  
+  dssd
+  
+  
+  <img src=images/cff_038.png>
+  
+  
+  
+  sssds
+  
+  
+  <img src=images/cff_039.png>
+  
+  
+  ddsfd
+  
+  <img src=images/cff_040.png>
+  
+  dds
+  
+  <img src=images/cff_041.png>
+  
+  
+  dfd
+  
+  
+  <img src=images/cff_042.png>
+  
+  
+  ssds
+  
+  
+  <img src=images/cff_043.png>
+  
+  
+  
+  ddsdw
+  
+  
+  <img src=images/cff_044.png>
+  
+  
+  
+  dsds
+  
+  
+  <img src=images/cff_045.png>
+  
+  
+  
+  dsds
+  
+  
+  <img src=images/cff_046.png>
+  
+  
+  
+  
+  sdsda
+  
+  
+  <img src=images/cff_047.png>
+  
+  
+  
+  sasas
+  
+  
+  
+  <img src=images/cff_048.png>
+  
+  dfdffd
+  
+  <img src=images/cff_049.png>
+  
+  dsds
+  
+  <img src=images/cff_050.png>
+  
+  
+  ssss
+  
+  <img src=images/cff_051.png>
+  
   
 Futuramente, seria interessante, testar mais extensamente as combinações de função logarítmica e dados sem transformação e usar outros métodos como decision forest para obter melhores resultados.
 
