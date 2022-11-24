@@ -1,21 +1,26 @@
 <div align="center">
-<img src="images/diamonds-transparent-background-20.png" width="400">
+<img src="images/grocerybasket.png" width="400">
 
 # Corporación Favorita
 <div align="left">
-Uso de uma base de dados de características e preços de diamantes, limpeza de dados e construção de um modelo de regressão linear para prever os preços de uma segunda base de dados. 
-
+Uso de uma base de dados para desenvolvimento de um modelo preditivo de deep learning para prever a demanda dos 20 produtos mais vendidos em uma rede de lojas de varejo.
+  
 
 ## Tecnologia
 
 Os softwares  usados neste projeto foram:
 
 * Python version  3.9.5
-
+* Dbeaver 22.1.1
+* MySql Workbench 8.0
+  
+  
+  
 ## Serviços Usados
 
 * Github
-
+* Colab
+* Google Drive
 
 ## Bibliotecas Python
 
@@ -23,11 +28,14 @@ Os softwares  usados neste projeto foram:
 * Numpy
 * Matplotlib.pyplot
 * Seaborn
-* Sklearn.model_selection.train_test_split
-* Sklearn.linear_model.LinearRegression
+* Sklearn.impute
 * Sklearn.metrics
 * Sklearn.preprocessing
-
+* Sklearn.neighbors
+* Catboost
+* Keras
+  
+  
 ## Como foi feito
 
 Será descrito abaixo através de textos e imagens.
@@ -192,65 +200,76 @@ escrvemos este código para mapear os dados e puxar os valores que encontrar cru
   
   ### EDA
   
+  Nesta etapa vamos fazer algumas análises dos dados para ver se é pertinente manter as variávies criadas e se é possível visualizar padrões.
+  
+Apartir deste ponto do projeto usamos a funcionalidade de integração do Google Drive com o colab para carregar instantâneamente os arquivos, pois com a criação das variáveis dummies estavamos com um número grande de colunas e o tempo de carregamento para uso em mais de uma estação de trabalho começou a ser muito subtancial.
+  
   
   <img src=images/cff_027.png>
   
   
   
-  ddff
+Referente a transações analisando a linha da variável alvo, verificamos que a loja possui uma correlação mais forte entre as variáveis, assim talvez um modelo por cada loja pode ser uma alternativa para prever este tipo de variável, vimos algum grau de correlação entre o feriado de natal e os dias de final de semana, também vermos na véspera de feriado uma correção moderada
   
   
   <img src=images/cff_028.png>
   
   
   
-  sssdds
+Agora quanto a unidades vendidas vimos uma correlação com a promoção dia da semana e referente ao colunas de classificação de produtos e uma correlação moderada com os feriados.
   
   
-  <img src=images/cff_029.png>
+  <img src=images/cff_29a.png>
   
   
   
-  ddfd
+Separamos os dados por categoria de produto, padaria e bebidas estas categorias foram escolhidas pois tiveram mais correlação com a nossa variável alvo as unidades vendidas. 
+  
+Plotando unidades vendidas por data e marcando o sábado, vimos claramente uma região de concentração
+ 
   
   
   <img src=images/cff_030.png>
   
   
   
-  sdsds
+ Depois trocando a legenda para o dia com pontos mais altos vemos uma concentração também
   
   
   
   <img src=images/cff_031.png>
   
   
-  s
+  Do Mesmo modo com o dia com pontos mais baixos.
   
   
   <img src=images/cff_032.png>
 
   
-  s
+  Para os feriados vimos uns pontos de concentração para o setor de bebidas mas para o setor de padaria um padão bem mais disperso 
   
   
   <img src=images/cff_033.png>
   
   
-  sss
+  Para Transações vimos os dias da semana claramente também afetadando criando camadas bem definidas
+  
+  
   
   
   <img src=images/cff_034.png>
   
   
   
-  sssd
+  Para feriados vimos nas transações que eles se encaixam com os pontos mais altos
   
   
   <img src=images/cff_035.png>
   
   
+  Assim vimos que de um modo geral as variáveis criadas podem ser usadas por nosso modelo para compreeender as diferenças de dadso mas que para alguns produtos são este impacto ocorre de forma diferente mas ainda são válidas para contrução de nosso modelo.
   
+ ### Contruindo  o Modelo Preditivo
   
   ddsds
   
