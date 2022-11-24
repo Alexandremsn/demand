@@ -368,13 +368,18 @@ Para os dados temos o valor de unidades vendidas que se dá por vendas - devolu�
 
 ## Recursos Usados
 
+  - Criação de banco de dados e tabelas
+  - Consulta em abiente SQL
+  - Exportar resultado da consulta como CSV
   - Importação de Database
   - Limpeza de dados
   - Criação de um DataFrame
   - Análise de parâmetros estatísticos
   - Análise de gráficos
-  - Construção de um modelo de regressão linear
-  - Teste e validação deste modelo
+  - Criação de variáveis
+  - Imputação de valores faltantes
+  - Teste e validação de um modelo de Nearest Neighbors
+  - Teste e validação de dois modelos preditivos de rede neural utilizando o Keras
   
 
 ## Links
