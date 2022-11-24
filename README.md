@@ -364,13 +364,13 @@ Agora escalamos o modelo para todas as lojas.
   
   
 Como era esperado o modelo performou pior com dados mais heterogêneos, porém esta não é a única explicação, temos concorrentemente a variação, alto índice de devoluções também impactando de forma geral negativamente, porém de forma diferente em diferentes produtos, indo de impactar claramente a simplesmente não ter impacto nenhum no erro. olhando os agrupamentos por classe de produto e tipo de produto, não observamos pelo menos com os 20 produtos que temos um padrão claro.
-Para os dados temos o valor de unidades vendidas que se dá por vendas - devoluções, mas como não temos esta separação, seria um dado interesante para agregar, pois tratando os dois valores em separado poderíamos observar melhor a influêcia ou não das devoluções nas vendas. outro ponto seria expandir o modelo para poder mensurar de forma melhor a influência das classes e tipos de produtos na assertividade do modelo.
+Para os dados temos o valor de unidades vendidas que se dá por vendas - devoluções, mas como não temos esta separação, seria um dado interessante para agregar, pois tratando os dois valores em separado poderíamos observar melhor a influência ou não das devoluções nas vendas. outro ponto seria expandir o modelo para poder mensurar de forma melhor a influência das classes e tipos de produtos na assertividade do modelo.
 
 
 ## Recursos Usados
 
   - Criação de banco de dados e tabelas
-  - Consulta em abiente SQL
+  - Consulta em ambiente SQL
   - Exportar resultado da consulta como CSV
   - Importação de Database
   - Limpeza de dados
