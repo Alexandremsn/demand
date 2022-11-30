@@ -46,6 +46,8 @@ Para este projeto usamos diversas bases de dados, como de transações, preço d
 tratamos as bases separadamente, e posteriormente integramos os dados necessários ao nosso modelo na base principal.
 Em um primeiro momento recorremos ao SQL para filtrar a base pois a base original possui algo em torno de 125 milhões de linhas e devido as minhas limitações computacionais elaboramos um script para filtrar os 20 produtos mais vendidos e exportar o resultado desta consulta em um arquivo .csv, ficamos com uma base de aproximadamente 1,6 milhões de linhas.
   
+fonte de dados: https://www.kaggle.com/c/favorita-grocery-sales-forecasting
+  
 ### Ambiente SQL
   
 Primeiramente criamos o banco de dados a tabela e alimentamos ela neste banco de dados
